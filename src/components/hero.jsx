@@ -8,7 +8,7 @@ export const Hero = () => {
           </button>
           <button className="bg-black text-white font-bold px-2 py-1 rounded-2xl">Instalar app</button>
         </div>
-        <img className="rounded-lg p-2 w-[10%]" src="https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg" alt="" />
+        <img className="rounded-lg p-2 md:w-[20%] w-[30%]" src="https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg" alt="" />
       </main>
     </>
   );
