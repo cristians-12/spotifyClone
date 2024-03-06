@@ -7,8 +7,14 @@ export const BarraControl = () => {
 
   const reproducirAudio = () => {
     setReproduciendo(!reproduciendo);
-    if (audioRef.current) {
-      audioRef.current.audioEl.current.play();
+    if(reproduciendo == false){
+        if (audioRef.current) {
+            audioRef.current.audioEl.current.play();
+          }
+    }else{
+        if (audioRef.current) {
+            audioRef.current.audioEl.current.pause();
+          }
     }
   };
   return (
@@ -16,7 +22,7 @@ export const BarraControl = () => {
       <ReactAudioPlayer
         src="https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3"
         controls
-        className="bg-red-500 hidden "
+        className="bg-red-500 hidden absolute top-0  "
         ref={audioRef}
       />
 
