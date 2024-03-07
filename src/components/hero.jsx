@@ -23,7 +23,7 @@ export const Hero = ({ setTema, setReproduciendo, api }) => {
           {
             api.map(
               (elemento)=>(
-                <div key={elemento.id} className="bg-[#171717] md:w-[15%] w-[45vw] p-5 rounded-xl text-white text-center font-semibold">
+                <div key={elemento.id} className="bg-[#171717] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold">
                 <img
                   onClick={() => {
                     setTema(elemento.url);
