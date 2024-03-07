@@ -14,39 +14,51 @@ function App() {
       id: 1,
       nombre: 'Prohibidox',
       url: "https://severmp3teca.xyz/-/mp3/Feid - Prohibidox.mp3",
-      imagen: "https://elgeneroplus.net/wp-content/uploads/2023/07/Feid-Feliz-Cumple-Ferxxo-Album-2022.jpg"
+      imagen: "https://elgeneroplus.net/wp-content/uploads/2023/07/Feid-Feliz-Cumple-Ferxxo-Album-2022.jpg",
+      artista: 'Feid'
     },
     {
       id:2,
       nombre: 'Ferxxo 151',
       url: "https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3",
-      imagen: 'https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg'
+      imagen: 'https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg',
+      artista: 'Feid'
     },
     {
       id:3,
       nombre: 'Diluvio',
       url: "https://severmp3teca.xyz/-/mp3/Rauw Alejandro - Diluvio.mp3",
-      imagen: "https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg"
+      imagen: "https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg",
+      artista: 'Rauw Alejandro'
     },
     {
       id:4,
       nombre: 'Volver',
       url:"https://elgeneroplus.com/download/Tainy_Ft._Rauw_Alejandro__Skrillex_Y_Four_Tet_-_VOLVER_(WWW.ELGENEROPLUS.COM).mp3",
       imagen: "https://elgeneroplus.com/wp-content/uploads/data-640x640-1.jpg",
+      artista: 'Rauw Alejandro Ft. Skrillex'
     },
     {
       id:5,
       nombre: 'Medallo',
       url: "https://severmp3teca.xyz/-/mp3/Blessd ft Justin Quiles ft Lenny Tavarez - Medallo.mp3",
       imagen: "https://elgeneroplus.net/wp-content/uploads/2021/10/Blessd-Hecho-En-Medellin-Album-2021.jpg",
+      artista: 'Blessd'
     },
     {
       id:6,
       nombre: 'Get Lucky',
       url: "http://mysound.ge/uploads/tracks/891214478_1565133657_894640020.mp3",
       imagen: "https://cdns-images.dzcdn.net/images/cover/bc49adb87758e0c8c4e508a9c5cce85d/500x500.jpg",
+      artista: 'Daft Punk ft. Pharrell Williams'
     },
-    
+    {
+      id:7,
+      nombre: 'Buscandote',
+      url: 'https://ve47.aadika.xyz/download/mfhIs1lABqg/mp3/320/1709856911/778bbb421cb4b2d5b39a4187cb6d58b74e68970c0fd4e65de0ffdd98a7a4cce1/1?f=Y2meta.app',
+      imagen: 'https://cdns-images.dzcdn.net/images/cover/bc49adb87758e0c8c4e508a9c5cce85d/500x500.jpg',
+      artista: 'Siddharta'
+    }
   ]
 
   const datos = {

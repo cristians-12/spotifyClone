@@ -36,6 +36,9 @@ export const Hero = ({ setTema, setReproduciendo, api }) => {
                   alt=""
                 />
                 <h1>{elemento.nombre}</h1>
+                <p className="font-light">
+                  {elemento.artista}
+                </p>
               </div>
               )
             )
