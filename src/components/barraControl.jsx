@@ -1,10 +1,27 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 
 export const BarraControl = () => {
   const audioRef = useRef(null);
   const [reproduciendo, setReproduciendo] = useState(false);
+  const [tiempo, setTiempo] = useState("0:00");
+  const [duracion, setDuracion] = useState('0:00');
+
+  useEffect(() => {
+    const tiempoTema = () => {
+      setInterval(() => {
+        const tiempoActual = document.querySelector(
+          ".react-audio-player"
+        ).currentTime;
+        const mins = Math.floor(tiempoActual / 60);
+        const segs = Math.floor(tiempoActual % 60);
+        setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
+      }, 1000);
+    };
+    tiempoTema();
+
+  }, []);
 
   const reproducirAudio = () => {
     setReproduciendo(!reproduciendo);
@@ -45,7 +62,7 @@ export const BarraControl = () => {
           </div>
         </div>
         <div className="w-[100%] flex items-center gap-2 justify-center">
-          <p className="text-gray-600">0:00</p>
+          <p className="text-gray-600">{tiempo}</p>
           <div className="h-[4px] w-[40%] bg-gray-500 rounded-full"></div>
         </div>
       </div>
