@@ -2925,7 +2925,7 @@ function App() {
 
   return (
     <>
-      {tema.map((elemento) => (
+      {/* {tema.map((elemento) => (
         <li key={elemento.id}>
           {elemento.data.name}
           <img
@@ -2936,7 +2936,7 @@ function App() {
       ))}
       {tema.forEach((elemento) => {
         console.log(elemento.data);
-      })}
+      })} */}
       <Hero />
       <BarraControl />
     </>
