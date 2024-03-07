@@ -7,6 +7,7 @@ import { Hero } from "./components/hero";
 
 function App() {
   const [tema, setTema] = useState("https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3");
+  const [reproduciendo, setReproduciendo] = useState(false);
 
   const datos = {
     albums: {
@@ -2938,8 +2939,8 @@ function App() {
       {tema.forEach((elemento) => {
         console.log(elemento.data);
       })} */}
-      <Hero setTema={setTema} />
-      <BarraControl tema={tema} />
+      <Hero setTema={setTema} setReproduciendo={setReproduciendo} />
+      <BarraControl tema={tema} reproduciendo={reproduciendo} setReproduciendo={setReproduciendo} />
     </>
   );
 }

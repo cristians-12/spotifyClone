@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 
-export const BarraControl = ({tema}) => {
+export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
   const audioRef = useRef(null);
-  const [reproduciendo, setReproduciendo] = useState(false);
+  // const [reproduciendo, setReproduciendo] = useState(false);
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState('0:00');
   // const [tema, setTema] = useState('')
@@ -62,7 +62,7 @@ export const BarraControl = ({tema}) => {
       <ReactAudioPlayer
         src={tema}
         controls
-        className="bg-red-500 hidden absolute top-0  "
+        className="bg-red-500  absolute top-0  "
         ref={audioRef}
       />
 
