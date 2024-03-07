@@ -9,6 +9,39 @@ function App() {
   const [tema, setTema] = useState("https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3");
   const [reproduciendo, setReproduciendo] = useState(false);
 
+  const api = [
+    {
+      id: 1,
+      nombre: 'Prohibidox',
+      url: "https://severmp3teca.xyz/-/mp3/Feid - Prohibidox.mp3",
+      imagen: "https://elgeneroplus.net/wp-content/uploads/2023/07/Feid-Feliz-Cumple-Ferxxo-Album-2022.jpg"
+    },
+    {
+      id:2,
+      nombre: 'Ferxxo 151',
+      url: "https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3",
+      imagen: 'https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg'
+    },
+    {
+      id:3,
+      nombre: 'Diluvio',
+      url: "https://severmp3teca.xyz/-/mp3/Rauw Alejandro - Diluvio.mp3",
+      imagen: "https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg"
+    },
+    {
+      id:4,
+      nombre: 'Volver',
+      url:"https://elgeneroplus.com/download/Tainy_Ft._Rauw_Alejandro__Skrillex_Y_Four_Tet_-_VOLVER_(WWW.ELGENEROPLUS.COM).mp3",
+      imagen: "https://elgeneroplus.com/wp-content/uploads/data-640x640-1.jpg",
+    },
+    {
+      id:5,
+      nombre: 'Medallo',
+      url: "https://severmp3teca.xyz/-/mp3/Blessd ft Justin Quiles ft Lenny Tavarez - Medallo.mp3",
+      imagen: "https://elgeneroplus.net/wp-content/uploads/2021/10/Blessd-Hecho-En-Medellin-Album-2021.jpg",
+    }
+  ]
+
   const datos = {
     albums: {
       totalCount: 672,
@@ -2939,7 +2972,7 @@ function App() {
       {tema.forEach((elemento) => {
         console.log(elemento.data);
       })} */}
-      <Hero setTema={setTema} setReproduciendo={setReproduciendo} />
+      <Hero setTema={setTema} setReproduciendo={setReproduciendo} api={api} />
       <BarraControl tema={tema} reproduciendo={reproduciendo} setReproduciendo={setReproduciendo} />
     </>
   );
