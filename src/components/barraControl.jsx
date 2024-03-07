@@ -84,7 +84,11 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
         </div>
         <div className="w-[100%] flex items-center gap-2 justify-center">
           <p className="text-gray-600">{tiempo}</p>
-          <div className="h-[4px] w-[40%] bg-gray-500 rounded-full"></div>
+          <div className="h-[4px] w-[40%] bg-gray-500 rounded-full">
+            <div className={`w-[${duracion}%] h-[100%] bg-white`}>
+
+            </div>
+          </div>
           <p className="text-gray-600">{duracion}</p>
         </div>
       </div>
