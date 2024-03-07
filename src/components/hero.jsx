@@ -19,20 +19,20 @@ export const Hero = ({ setTema, setReproduciendo }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-around">
-          <div className="bg-[#171717] w-[15%] p-5 rounded-xl text-white text-center font-semibold">
+        <div className="flex flex-wrap justify-around gap-3">
+          <div className="bg-[#171717] md:w-[15%] w-[200px] p-5 rounded-xl text-white text-center font-semibold">
             <img
               onClick={() => {
                 setTema("https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3");
                 setReproduciendo(false);
               }}
-              className="rounded-lg p-2 md:w-[100%] w-[30%]"
+              className="rounded-lg p-2 md:w-[100%] w-[100%]"
               src="https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg"
               alt=""
             />
             <h1>Ferxxo 151</h1>
           </div>
-          <div className="bg-[#171717] w-[15%] p-5 rounded-xl text-white text-center font-semibold">
+          <div className="bg-[#171717] md:w-[15%] w-[200px] p-5 rounded-xl text-white text-center font-semibold">
             <img
               onClick={() => {
                 setTema(
@@ -40,13 +40,13 @@ export const Hero = ({ setTema, setReproduciendo }) => {
                 );
                 setReproduciendo(false);
               }}
-              className="p-2 md:w-[100%] w-[30%]"
+              className="p-2 md:w-[100%] w-[100%]"
               src="https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg"
               alt=""
             />
             <h1>Diluvio</h1>
           </div>
-          <div className="bg-[#171717] w-[15%] p-5 rounded-xl text-white text-center font-semibold">
+          <div className="bg-[#171717] md:w-[15%] w-[200px] p-5 rounded-xl text-white text-center font-semibold">
             <img
               onClick={() => {
                 setTema(
@@ -54,13 +54,13 @@ export const Hero = ({ setTema, setReproduciendo }) => {
                 );
                 setReproduciendo(false);
               }}
-              className="p-2 md:w-[100%] w-[30%]"
+              className="p-2 md:w-[100%] w-[100%]"
               src="https://elgeneroplus.com/wp-content/uploads/data-640x640-1.jpg"
               alt=""
             />
             <h1>Volver</h1>
           </div>
-          <div className="bg-[#171717] w-[15%] p-5 rounded-xl text-white text-center font-semibold">
+          <div className="bg-[#171717] md:w-[15%] w-[200px] p-5 rounded-xl text-white text-center font-semibold">
             <img
               onClick={() => {
                 setTema(
@@ -68,7 +68,7 @@ export const Hero = ({ setTema, setReproduciendo }) => {
                 );
                 setReproduciendo(false);
               }}
-              className="p-2 md:w-[100%] w-[30%]"
+              className="p-2 md:w-[100%] w-[100%]"
               src="https://elgeneroplus.net/wp-content/uploads/2021/10/Blessd-Hecho-En-Medellin-Album-2021.jpg"
               alt=""
             />
