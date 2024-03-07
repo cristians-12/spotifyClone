@@ -4,7 +4,9 @@ import { Bell } from "../assets/svg/svg";
 export const Hero = ({ setTema, setReproduciendo, api }) => {
   return (
     <>
-      <main className="bg-[#121019] h-screen w-screen">
+    
+      <main className="bg-[#121019] h-screen w-screen text-white px-2">
+      <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4">
           <div className="flex items-center gap-2">
             <button className="bg-white font-bold px-2 py-1 rounded-2xl">

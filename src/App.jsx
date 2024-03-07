@@ -39,7 +39,14 @@ function App() {
       nombre: 'Medallo',
       url: "https://severmp3teca.xyz/-/mp3/Blessd ft Justin Quiles ft Lenny Tavarez - Medallo.mp3",
       imagen: "https://elgeneroplus.net/wp-content/uploads/2021/10/Blessd-Hecho-En-Medellin-Album-2021.jpg",
-    }
+    },
+    {
+      id:6,
+      nombre: 'Get Lucky',
+      url: "http://mysound.ge/uploads/tracks/891214478_1565133657_894640020.mp3",
+      imagen: "https://cdns-images.dzcdn.net/images/cover/bc49adb87758e0c8c4e508a9c5cce85d/500x500.jpg",
+    },
+    
   ]
 
   const datos = {
