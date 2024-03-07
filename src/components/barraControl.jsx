@@ -9,6 +9,7 @@ export const BarraControl = () => {
   const [duracion, setDuracion] = useState('0:00');
 
   useEffect(() => {
+    
     const tiempoTema = () => {
       setInterval(() => {
         const tiempoActual = document.querySelector(
@@ -21,6 +22,25 @@ export const BarraControl = () => {
     };
     tiempoTema();
 
+  }, []);
+
+  useEffect(() => {
+    const loadedMetadata = () => {
+      const duracionTotal = audioRef.current.audioEl.current.duration;
+      const minutos = Math.floor(duracionTotal / 60);
+      const segundos = Math.floor(duracionTotal % 60);
+      setDuracion(`${minutos}:${segundos < 10 ? '0' + segundos : segundos}`);
+    };
+
+    if (audioRef.current) {
+      audioRef.current.audioEl.current.addEventListener('loadedmetadata', loadedMetadata);
+    }
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.audioEl.current.removeEventListener('loadedmetadata', loadedMetadata);
+      }
+    };
   }, []);
 
   const reproducirAudio = () => {
@@ -64,6 +84,7 @@ export const BarraControl = () => {
         <div className="w-[100%] flex items-center gap-2 justify-center">
           <p className="text-gray-600">{tiempo}</p>
           <div className="h-[4px] w-[40%] bg-gray-500 rounded-full"></div>
+          <p className="text-gray-600">{duracion}</p>
         </div>
       </div>
     </>
