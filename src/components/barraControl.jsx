@@ -62,7 +62,7 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
       <ReactAudioPlayer
         src={tema}
         controls
-        className="bg-red-500  absolute top-0  "
+        className="bg-red-500 hidden absolute top-0  "
         ref={audioRef}
       />
 
