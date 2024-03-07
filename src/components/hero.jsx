@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Bell } from "../assets/svg/svg";
 
-export const Hero = () => {
+export const Hero = ({setTema}) => {
+  
+
+
   return (
     <>
       <main className="bg-[#171717] h-screen w-screen">
@@ -18,10 +22,11 @@ export const Hero = () => {
           </div>
         </div>
         <img
-          className="rounded-lg p-2 md:w-[20%] w-[30%]"
+          className="rounded-lg p-2 md:w-[10%] w-[30%]"
           src="https://mp3teca.co/-/images/26004_1400_20230825004731-300x300.jpg"
           alt=""
         />
+        <img onClick={()=>setTema("https://severmp3teca.xyz/-/mp3/Rauw Alejandro - Diluvio.mp3")} className="p-2" src="https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg" alt="" />
       </main>
     </>
   );

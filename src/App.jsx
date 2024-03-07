@@ -6,7 +6,8 @@ import { BarraControl } from "./components/barraControl";
 import { Hero } from "./components/hero";
 
 function App() {
-  const [tema, setTema] = useState([]);
+  const [tema, setTema] = useState("https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3");
+
   const datos = {
     albums: {
       totalCount: 672,
@@ -2937,8 +2938,8 @@ function App() {
       {tema.forEach((elemento) => {
         console.log(elemento.data);
       })} */}
-      <Hero />
-      <BarraControl />
+      <Hero setTema={setTema} />
+      <BarraControl tema={tema} />
     </>
   );
 }
