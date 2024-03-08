@@ -56,7 +56,7 @@ function App() {
       id:7,
       nombre: 'Buscandote',
       url: 'https://ve47.aadika.xyz/download/mfhIs1lABqg/mp3/320/1709856911/778bbb421cb4b2d5b39a4187cb6d58b74e68970c0fd4e65de0ffdd98a7a4cce1/1?f=Y2meta.app',
-      imagen: 'https://cdns-images.dzcdn.net/images/cover/bc49adb87758e0c8c4e508a9c5cce85d/500x500.jpg',
+      imagen: 'https://i.scdn.co/image/ab67616d0000b2734d7f05e6a9b26e981e9ac3ac',
       artista: 'Siddharta'
     }
   ]
