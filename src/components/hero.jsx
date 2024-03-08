@@ -5,7 +5,7 @@ export const Hero = ({ setTema, setReproduciendo, api }) => {
   return (
     <>
     
-      <main style={{ fontFamily: "var(--font-family,CircularSpTitle,CircularSpTitle-Tall,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif))"}} className="bg-[#121019] h-screen w-screen text-white px-2">
+      <main  className="bg-[#121019] w-screen text-white px-2">
       <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4">
           <div className="flex items-center gap-2">
