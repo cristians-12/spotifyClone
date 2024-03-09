@@ -5,7 +5,7 @@ import { Bell } from "../assets/svg/svg";
 export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
   return (
     <>
-      <main className="bg-[#121019] w-screen text-white px-2">
+      <main className="bg-[#121019] w-[100%] text-white px-2">
         <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4">
           <div className="flex items-center gap-2">
@@ -25,7 +25,7 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
           {api.map((elemento) => (
             <div
               key={elemento.id}
-              className="bg-[#171717] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
+              className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
             >
               <img
                 onClick={() => {
@@ -42,7 +42,8 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
           ))}
         </div>
         <h1 className="text-[40px] font-bold">Feid</h1>
-        <div>
+        <div className="w-[90%] flex">
+
           {temas &&
             temas.length > 0 &&
             temas.map((element) => (
@@ -52,7 +53,7 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
                   setReproduciendo(false);
                 }}
                 key={element.nombre}
-                className="bg-[#171717] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
+                className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
               >
                 <ul>
                   {element.albums &&

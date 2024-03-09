@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { BarraControl } from "./components/barraControl";
 import { Hero } from "./components/hero";
 import { initializeApp } from 'firebase/app';
@@ -21,7 +20,6 @@ function App() {
      
       setTemas(cancioness);
     }
-
     fetchDb();
   },[])
 
