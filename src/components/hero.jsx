@@ -5,7 +5,7 @@ import { Bell } from "../assets/svg/svg";
 export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
   return (
     <>
-      <main className="bg-[#121019] w-[100%] text-white px-2">
+      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb-0">
         <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4">
           <div className="flex items-center gap-2">
