@@ -5,7 +5,7 @@ import { Bell } from "../assets/svg/svg";
 export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
   return (
     <>
-      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb-0">
+      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb-">
         <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4">
           <div className="flex items-center gap-2">
@@ -42,18 +42,18 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
           ))}
         </div>
         <h1 className="text-[40px] font-bold">Feid</h1>
-        <div className="w-[90%] flex">
+        <div className="w-[90%] flex gap-5 justify-around">
 
           {temas &&
             temas.length > 0 &&
-            temas.map((element) => (
+            temas.filter((element)=>element.nombre === 'Feid').map((element) => (
               <div
                 onClick={() => {
                   setTema(element.albums[0].canciones[0]);
                   setReproduciendo(false);
                 }}
                 key={element.nombre}
-                className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
+                className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
               >
                 <ul>
                   {element.albums &&
@@ -64,7 +64,9 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
                           className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
                           alt=""
                         />
+                        <h2 className="text-clip">
                         {album.nombre}
+                        </h2>
                       </li>
                     ))}
                 </ul>
