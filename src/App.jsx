@@ -1,13 +1,29 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BarraControl } from "./components/barraControl";
 import { Hero } from "./components/hero";
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from "./config/firebase";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 function App() {
   const [tema, setTema] = useState("https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3");
   const [reproduciendo, setReproduciendo] = useState(false);
+  const [temas, setTemas] = useState({});
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  useEffect(()=>{
+    const fetchDb = async ()=>{
+      const album = collection(db, 'artistas');
+      const canciones = await getDocs(album);
+      const cancioness = canciones.docs.map(doc => doc.data());
+     
+      setTemas(cancioness);
+    }
+
+    fetchDb();
+  },[])
 
   const api = [
     {
@@ -2991,7 +3007,7 @@ function App() {
       {tema.forEach((elemento) => {
         console.log(elemento.data);
       })} */}
-      <Hero setTema={setTema} setReproduciendo={setReproduciendo} api={api} />
+      <Hero setTema={setTema} setReproduciendo={setReproduciendo} api={api} temas={temas} />
       <BarraControl tema={tema} reproduciendo={reproduciendo} setReproduciendo={setReproduciendo} />
     </>
   );
