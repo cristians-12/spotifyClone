@@ -7,6 +7,7 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
   // const [reproduciendo, setReproduciendo] = useState(false);
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState('0:00');
+  const [barra, setBarra ] = useState(0)
   // const [tema, setTema] = useState('')
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
         const tiempoActual = document.querySelector(
           ".react-audio-player"
         ).currentTime;
+        setBarra(tiempoActual);
         const mins = Math.floor(tiempoActual / 60);
         const segs = Math.floor(tiempoActual % 60);
         setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
@@ -74,6 +76,7 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
           <div
             onClick={reproducirAudio}
             className="bg-white px-2 py-1 rounded-full"
+            
           >
             {reproduciendo ? <Pause /> : <Play />}
           </div>
@@ -84,8 +87,8 @@ export const BarraControl = ({tema,reproduciendo, setReproduciendo}) => {
         </div>
         <div className="w-[100%] flex items-center gap-2 justify-center">
           <p className="text-gray-600">{tiempo}</p>
-          <div className="h-[4px] w-[40%] bg-gray-500 rounded-full">
-            <div className={`w-[${duracion}%] h-[100%] bg-white`}>
+          <div className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black">
+            <div className={`w-[${barra}px] h-[100%] bg-white`} style={ { width: barra, transition: 'width 0.3s ease' } }>
 
             </div>
           </div>
