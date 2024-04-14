@@ -4,26 +4,9 @@ import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 
 export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
   const audioRef = useRef(null);
-  // const [reproduciendo, setReproduciendo] = useState(false);
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState("0:00");
   const [barra, setBarra] = useState(0);
-  // const [tema, setTema] = useState('')
-
-  useEffect(() => {
-    const tiempoTema = () => {
-      setInterval(() => {
-        const tiempoActual = document.querySelector(
-          ".react-audio-player"
-        ).currentTime;
-        setBarra(tiempoActual);
-        const mins = Math.floor(tiempoActual / 60);
-        const segs = Math.floor(tiempoActual % 60);
-        setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
-      }, 1000);
-    };
-    tiempoTema();
-  }, []);
 
   useEffect(() => {
     const loadedMetadata = () => {
@@ -31,6 +14,14 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
       const minutos = Math.floor(duracionTotal / 60);
       const segundos = Math.floor(duracionTotal % 60);
       setDuracion(`${minutos}:${segundos < 10 ? "0" + segundos : segundos}`);
+
+      setInterval(() => {
+        const tiempoActual = audioRef.current.audioEl.current.currentTime;
+        setBarra((tiempoActual / duracionTotal) * 100);
+        const mins = Math.floor(tiempoActual / 60);
+        const segs = Math.floor(tiempoActual % 60);
+        setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
+      }, 1000);
     };
 
     if (audioRef.current) {
@@ -68,7 +59,7 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
       <ReactAudioPlayer
         src={tema}
         controls
-        className="bg-red-500 hidden absolute top-0  "
+        className="bg-red-500 hidden absolute top-0"
         ref={audioRef}
       />
 
@@ -83,7 +74,6 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
           >
             {reproduciendo ? <Pause /> : <Play />}
           </div>
-
           <div>
             <Skip izquierda={false} />
           </div>
@@ -93,7 +83,7 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
           <div className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black">
             <div
               className={` h-[100%] bg-[#1ED660]`}
-              style={{ width: barra, transition: "width 0.3s ease" }}
+              style={{ width: `${barra}%`, transition: "width 0.3s ease" }}
             ></div>
           </div>
           <p className="text-gray-600">{duracion}</p>
