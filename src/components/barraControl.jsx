@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 
-export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
+export const BarraControl = ({ tema, reproduciendo, setReproduciendo, nombre }) => {
   const audioRef = useRef(null);
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState("0:00");
   const [barra, setBarra] = useState(0);
+
 
   useEffect(() => {
     const loadedMetadata = () => {
@@ -88,6 +89,7 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo }) => {
           </div>
           <p className="text-gray-600">{duracion}</p>
         </div>
+        <h1 className="text-white">{nombre}</h1>
       </div>
     </>
   );

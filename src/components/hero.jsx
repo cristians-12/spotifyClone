@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Bell } from "../assets/svg/svg";
 import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
 
-export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
+export const Hero = ({ setTema, setReproduciendo, api, temas, nombre, setNombre }) => {
   const [hover, setHovered] = useState(false);
+  // const [nombre, setNombre] = useState(null);
+  const carta = useRef(null);
 
   return (
     <>
@@ -78,6 +80,9 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
                   onClick={() => {
                     setTema(element.albums[0].canciones[0]);
                     setReproduciendo(false);
+                    if (carta.current) {
+                      setNombre(carta.current.innerText)
+                    }
                   }}
                   key={element.nombre}
                   className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
@@ -95,7 +100,7 @@ export const Hero = ({ setTema, setReproduciendo, api, temas }) => {
                         </li>
                       ))}
                   </ul>
-                  <h2 className="font-light">{element.nombre}</h2>
+                  <h2 ref={carta} className="font-light">{element.nombre}</h2>
                 </div>
               ))}
         </div>

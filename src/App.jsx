@@ -20,6 +20,8 @@ function App() {
   );
   const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
+  const [nombre, setNombre] = useState(null);
+
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
@@ -2999,9 +3001,10 @@ function App() {
                 setReproduciendo={setReproduciendo}
                 api={api}
                 temas={temas}
-
+                nombre={nombre}
                 tema={tema}
                 reproduciendo={reproduciendo}
+                setNombre = {setNombre}
               />
             }
           />
