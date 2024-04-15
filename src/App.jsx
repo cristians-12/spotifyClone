@@ -21,6 +21,7 @@ function App() {
   const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
   const [nombre, setNombre] = useState(null);
+  const [imagen, setImagen] = useState(null);
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -30,6 +31,7 @@ function App() {
       const album = collection(db, "artistas");
       const canciones = await getDocs(album);
       const cancioness = canciones.docs.map((doc) => doc.data());
+      console.log(cancioness)
       setTemas(cancioness);
     };
 
@@ -111,7 +113,7 @@ function App() {
       nombre: "Nightcall",
       url: "http://mysound.ge/uploads/tracks/903761951_651257246_952452743.mp3",
       imagen:
-        "http://mysound.ge/thumb.php?src=1545519032_281536090_949103499.png&t=m&w=112&h=112",
+        "https://upload.wikimedia.org/wikipedia/en/5/5b/Kavinsky_Nightcall_2010.png",
       artista: "Kavinsky",
     },
   ];
@@ -132,6 +134,8 @@ function App() {
                 tema={tema}
                 reproduciendo={reproduciendo}
                 setNombre={setNombre}
+                imagen={imagen}
+                setImagen={setImagen}
               />
             }
           />

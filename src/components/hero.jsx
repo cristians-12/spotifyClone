@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Bell } from "../assets/svg/svg";
 import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
+import { ref } from "firebase/database";
 
 export const Hero = ({
   setTema,
@@ -11,10 +12,12 @@ export const Hero = ({
   temas,
   nombre,
   setNombre,
+  setImagen
 }) => {
   const [hover, setHovered] = useState(false);
   // const [nombre, setNombre] = useState(null);
   const carta = useRef(null);
+  const imgAlbum = useRef(null);
 
   return (
     <>
@@ -61,14 +64,17 @@ export const Hero = ({
               style={{
                 transition: "background-color 0.3s ease",
               }}
+              onClick={(e) => {
+                setTema(elemento.url);
+                setReproduciendo(false);
+                setImagen(e.currentTarget.querySelector('img').src)
+              }}
               key={elemento.id}
               className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
             >
               <img
-                onClick={() => {
-                  setTema(elemento.url);
-                  setReproduciendo(false);
-                }}
+                
+                ref={imgAlbum}
                 className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
                 src={elemento.imagen}
                 alt=""
@@ -91,6 +97,8 @@ export const Hero = ({
                     setReproduciendo(false);
                     if (carta.current) {
                       setNombre(carta.current.innerText);
+                      
+                      console.log(imgAlbum)
                     }
                   }}
                   key={element.nombre}

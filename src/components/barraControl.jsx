@@ -7,6 +7,7 @@ export const BarraControl = ({
   reproduciendo,
   setReproduciendo,
   nombre,
+  imagen,
 }) => {
   const audioRef = useRef(null);
   const [tiempo, setTiempo] = useState("0:00");
@@ -94,36 +95,41 @@ export const BarraControl = ({
         ref={audioRef}
       />
 
-      <div className="bg-black py-3 fixed bottom-0 flex justify-center w-[100%] items-center  flex-col gap-2">
-        <div className="flex items-center gap-3">
-          <div>
-            <Skip izquierda={true} />
+      <div className="bg-black py-3 fixed bottom-0 flex justify-center w-[100%] items-center px-5 gap-2">
+        <figure className="w-[5%]">
+          <img className="w-[100%]" src={imagen} alt="" />
+        </figure>
+        <div className="flex items-center gap-3 w-[100%] flex-col">
+          <div className="flex items-center gap-5">
+            <figure>
+              <Skip izquierda={true} />
+            </figure>
+            <figure
+              onClick={reproducirAudio}
+              className="bg-white px-2 py-1 rounded-full"
+            >
+              {reproduciendo ? <Pause /> : <Play />}
+            </figure>
+            <figure>
+              <Skip izquierda={false} />
+            </figure>
           </div>
-          <div
-            onClick={reproducirAudio}
-            className="bg-white px-2 py-1 rounded-full"
-          >
-            {reproduciendo ? <Pause /> : <Play />}
-          </div>
-          <div>
-            <Skip izquierda={false} />
-          </div>
-        </div>
-        <div className="w-[100%] flex items-center gap-2 justify-center">
-          <p className="text-gray-600">{tiempo}</p>
-          <div
-            className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black"
-            onClick={handleClick}
-          >
+          <div className="w-[100%] flex items-center gap-2 justify-center">
+            <p className="text-gray-600">{tiempo}</p>
             <div
-              className={`h-[100%] bg-[#1ED660]`}
-              style={{
-                width: `${barra}%`,
-                transition: "width 0.2s ease-in-out",
-              }}
-            ></div>
+              className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black"
+              onClick={handleClick}
+            >
+              <div
+                className={`h-[100%] bg-[#1ED660]`}
+                style={{
+                  width: `${barra}%`,
+                  transition: "width 0.2s ease-in-out",
+                }}
+              ></div>
+            </div>
+            <p className="text-gray-600">{duracion}</p>
           </div>
-          <p className="text-gray-600">{duracion}</p>
         </div>
         <h1 className="text-white">{nombre}</h1>
       </div>
