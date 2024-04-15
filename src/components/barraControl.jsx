@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 
-export const BarraControl = ({ tema, reproduciendo, setReproduciendo, nombre }) => {
+export const BarraControl = ({
+  tema,
+  reproduciendo,
+  setReproduciendo,
+  nombre,
+}) => {
   const audioRef = useRef(null);
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState("0:00");
   const [barra, setBarra] = useState(0);
-
 
   useEffect(() => {
     const loadedMetadata = () => {
@@ -15,20 +19,25 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo, nombre }) 
       const minutos = Math.floor(duracionTotal / 60);
       const segundos = Math.floor(duracionTotal % 60);
       setDuracion(`${minutos}:${segundos < 10 ? "0" + segundos : segundos}`);
+    };
 
-      setInterval(() => {
-        const tiempoActual = audioRef.current.audioEl.current.currentTime;
-        setBarra((tiempoActual / duracionTotal) * 100);
-        const mins = Math.floor(tiempoActual / 60);
-        const segs = Math.floor(tiempoActual % 60);
-        setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
-      }, 1000);
+    const timeUpdate = () => {
+      const duracionTotal = audioRef.current.audioEl.current.duration;
+      const tiempoActual = audioRef.current.audioEl.current.currentTime;
+      setBarra((tiempoActual / duracionTotal) * 100);
+      const mins = Math.floor(tiempoActual / 60);
+      const segs = Math.floor(tiempoActual % 60);
+      setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
     };
 
     if (audioRef.current) {
       audioRef.current.audioEl.current.addEventListener(
         "loadedmetadata",
         loadedMetadata
+      );
+      audioRef.current.audioEl.current.addEventListener(
+        "timeupdate",
+        timeUpdate
       );
     }
 
@@ -38,9 +47,30 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo, nombre }) 
           "loadedmetadata",
           loadedMetadata
         );
+        audioRef.current.audioEl.current.removeEventListener(
+          "timeupdate",
+          timeUpdate
+        );
       }
     };
   }, []);
+
+  const handleClick = (e) => {
+    const barraRect = e.target.getBoundingClientRect();
+    const barraWidth = barraRect.width;
+    const clicX = e.clientX - barraRect.left;
+    const porcentaje = (clicX / barraWidth) * 100;
+    const duracionTotal = audioRef.current.audioEl.current.duration;
+    const nuevoTiempo = (porcentaje / 100) * duracionTotal;
+
+    if (audioRef.current) {
+      audioRef.current.audioEl.current.currentTime = nuevoTiempo;
+      setBarra(porcentaje);
+      const mins = Math.floor(nuevoTiempo / 60);
+      const segs = Math.floor(nuevoTiempo % 60);
+      setTiempo(`${mins}:${segs < 10 ? "0" + segs : segs}`);
+    }
+  };
 
   const reproducirAudio = () => {
     setReproduciendo(!reproduciendo);
@@ -81,10 +111,16 @@ export const BarraControl = ({ tema, reproduciendo, setReproduciendo, nombre }) 
         </div>
         <div className="w-[100%] flex items-center gap-2 justify-center">
           <p className="text-gray-600">{tiempo}</p>
-          <div className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black">
+          <div
+            className="h-[4px] w-[40%] bg-gray-500 rounded-full bg-black"
+            onClick={handleClick}
+          >
             <div
-              className={` h-[100%] bg-[#1ED660]`}
-              style={{ width: `${barra}%`, transition: "width 0.3s ease" }}
+              className={`h-[100%] bg-[#1ED660]`}
+              style={{
+                width: `${barra}%`,
+                transition: "width 0.2s ease-in-out",
+              }}
             ></div>
           </div>
           <p className="text-gray-600">{duracion}</p>
