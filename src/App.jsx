@@ -88,8 +88,7 @@ function App() {
       id: 7,
       nombre: "Alakran",
       url: "https://elgeneroplus.com/download/Feid_-_ALAKRAN_(WWW.ELGENEROPLUS.COM).mp3",
-      imagen:
-        "https://elgeneroplus.com/wp-content/uploads/cover-19.jpg",
+      imagen: "https://elgeneroplus.com/wp-content/uploads/cover-19.jpg",
       artista: "Feid",
     },
     {
@@ -100,9 +99,22 @@ function App() {
         "https://i.scdn.co/image/ab67616d0000b2734d7f05e6a9b26e981e9ac3ac",
       artista: "Siddharta",
     },
-    
+    {
+      id: 9,
+      nombre: "Si te la encuentras por ahi",
+      url: "https://elgeneroplus.com/download/Feid_-_Si_Te_La_Encuentras_Por_Ahi_(WWW.ELGENERO.AI).mp3",
+      imagen: "https://i1.sndcdn.com/artworks-zlWJLgNqaikK-0-t500x500.jpg",
+      artista: "Feid",
+    },
+    {
+      id: 10,
+      nombre: "Nightcall",
+      url: "http://mysound.ge/uploads/tracks/903761951_651257246_952452743.mp3",
+      imagen:
+        "http://mysound.ge/thumb.php?src=1545519032_281536090_949103499.png&t=m&w=112&h=112",
+      artista: "Kavinsky",
+    },
   ];
-
 
   return (
     <>
@@ -119,11 +131,11 @@ function App() {
                 nombre={nombre}
                 tema={tema}
                 reproduciendo={reproduciendo}
-                setNombre = {setNombre}
+                setNombre={setNombre}
               />
             }
           />
-          <Route path="/register" element={<Registro/>} />
+          <Route path="/register" element={<Registro />} />
         </Routes>
       </BrowserRouter>
       {/* <Hero
