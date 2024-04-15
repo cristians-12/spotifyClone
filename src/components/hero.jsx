@@ -4,14 +4,21 @@ import { Bell } from "../assets/svg/svg";
 import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
 
-export const Hero = ({ setTema, setReproduciendo, api, temas, nombre, setNombre }) => {
+export const Hero = ({
+  setTema,
+  setReproduciendo,
+  api,
+  temas,
+  nombre,
+  setNombre,
+}) => {
   const [hover, setHovered] = useState(false);
   // const [nombre, setNombre] = useState(null);
   const carta = useRef(null);
 
   return (
     <>
-      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb-">
+      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb- px-10">
         <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4 items-center">
           <div className="flex items-center gap-2 ">
@@ -46,7 +53,9 @@ export const Hero = ({ setTema, setReproduciendo, api, temas, nombre, setNombre 
           </Link>
         </div>
 
-        <div className="flex flex-wrap justify-around gap-3">
+        <h3>Populares</h3>
+
+        <div className="flex justify-around gap-3 cont-pops overflow-x-auto w-[100%]">
           {api.map((elemento) => (
             <div
               style={{
@@ -81,7 +90,7 @@ export const Hero = ({ setTema, setReproduciendo, api, temas, nombre, setNombre 
                     setTema(element.albums[0].canciones[0]);
                     setReproduciendo(false);
                     if (carta.current) {
-                      setNombre(carta.current.innerText)
+                      setNombre(carta.current.innerText);
                     }
                   }}
                   key={element.nombre}
@@ -100,7 +109,9 @@ export const Hero = ({ setTema, setReproduciendo, api, temas, nombre, setNombre 
                         </li>
                       ))}
                   </ul>
-                  <h2 ref={carta} className="font-light">{element.nombre}</h2>
+                  <h2 ref={carta} className="font-light">
+                    {element.nombre}
+                  </h2>
                 </div>
               ))}
         </div>
