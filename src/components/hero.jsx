@@ -55,7 +55,7 @@ export const Hero = ({
 
         <h3>Populares</h3>
 
-        <div className="flex justify-around gap-3 cont-pops overflow-x-auto w-[100%]">
+        <div className="flex justify-around gap-3 cont-pops flex-wrap w-[100%]">
           {api.map((elemento) => (
             <div
               style={{
