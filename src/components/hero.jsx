@@ -58,30 +58,32 @@ export const Hero = ({
 
         <h3 className="font-bold text-[2rem] mb-5">Populares</h3>
 
-        <div className="flex justify-around gap-3 cont-pops flex-wrap w-[100%]">
-          {api.map((elemento) => (
-            <div
-              style={{
-                transition: "background-color 0.3s ease",
-              }}
-              onClick={(e) => {
-                setTema(elemento.url);
-                setReproduciendo(false);
-                setImagen(e.currentTarget.querySelector("img").src);
-              }}
-              key={elemento.id}
-              className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
-            >
-              <img
-                ref={imgAlbum}
-                className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
-                src={elemento.imagen}
-                alt=""
-              />
-              <h1>{elemento.nombre}</h1>
-              <p className="font-light">{elemento.artista}</p>
-            </div>
-          ))}
+        <div className="overflow-x-scroll">
+          <div className="flex justify-around gap-3 w-[500%]">
+            {api.map((elemento) => (
+              <div
+                style={{
+                  transition: "background-color 0.3s ease",
+                }}
+                onClick={(e) => {
+                  setTema(elemento.url);
+                  setReproduciendo(false);
+                  setImagen(e.currentTarget.querySelector("img").src);
+                }}
+                key={elemento.id}
+                className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
+              >
+                <img
+                  ref={imgAlbum}
+                  className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
+                  src={elemento.imagen}
+                  alt=""
+                />
+                <h1>{elemento.nombre}</h1>
+                <p className="font-light">{elemento.artista}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {temas &&
@@ -102,34 +104,36 @@ export const Hero = ({
                   <h1 className="text-[40px] font-bold">Feid</h1>
                 </div>
                 <ul className="overflow-x-scroll">
-                 <div className="w-[200%] flex gap-5 ">
-                 {element.albums &&
-                    element.albums.map((album) => (
-                      <li
-                        key={album.id}
-                        className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
-                        onClick={(e) => {
-                          setTema(album.canciones[0].url);
-                          setReproduciendo(false);
-                          if (carta.current) {
-                            setNombre(carta.current.innerText);
-                            console.log(imgAlbum);
-                          }
-                          setImagen(e.currentTarget.querySelector("img").src);
-                        }}
-                      >
-                        <img
-                          src={album.imagen}
-                          className="rounded-lg p-2 md:w-[100%] w-[150px]"
-                          alt=""
-                        />
-                        <h2 className="text-clip overflow-hidden w-[80%]">{album.nombre}</h2>
-                        <h2 ref={carta} className="font-light">
-                          {element.nombre}
-                        </h2>
-                      </li>
-                    ))}
-                 </div>
+                  <div className="w-[200%] flex gap-5 ">
+                    {element.albums &&
+                      element.albums.map((album) => (
+                        <li
+                          key={album.id}
+                          className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
+                          onClick={(e) => {
+                            setTema(album.canciones[0].url);
+                            setReproduciendo(false);
+                            if (carta.current) {
+                              setNombre(carta.current.innerText);
+                              console.log(imgAlbum);
+                            }
+                            setImagen(e.currentTarget.querySelector("img").src);
+                          }}
+                        >
+                          <img
+                            src={album.imagen}
+                            className="rounded-lg p-2 md:w-[100%] w-[150px]"
+                            alt=""
+                          />
+                          <h2 className="text-clip overflow-hidden w-[80%]">
+                            {album.nombre}
+                          </h2>
+                          <h2 ref={carta} className="font-light">
+                            {element.nombre}
+                          </h2>
+                        </li>
+                      ))}
+                  </div>
                 </ul>
               </div>
             ))}
