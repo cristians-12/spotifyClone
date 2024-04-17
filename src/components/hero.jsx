@@ -21,7 +21,7 @@ export const Hero = ({
 
   return (
     <>
-      <main className="bg-[#121019] w-[100%] text-white px-2 mb-[80px] md:mb- px-10">
+      <main className="bg-[#121019] w-[100%] text-white px-3 mb-[80px] md:mb- px-10">
         <h1 className="font-bold text-[40px]">Buenas tardes</h1>
         <div className="flex justify-between p-4 items-center">
           <div className="flex items-center gap-2 ">
@@ -56,7 +56,7 @@ export const Hero = ({
           </Link>
         </div>
 
-        <h3>Populares</h3>
+        <h3 className="font-bold text-[2rem] mb-5">Populares</h3>
 
         <div className="flex justify-around gap-3 cont-pops flex-wrap w-[100%]">
           {api.map((elemento) => (
