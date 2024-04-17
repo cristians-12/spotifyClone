@@ -95,11 +95,11 @@ function App() {
     },
     {
       id: 8,
-      nombre: "Buscandote",
-      url: "https://pouch.jumpshare.com/preview/wr6s-qTny-HbR86BRCfC-N9dfgbM9k4LH6M54x91VgwYQLKT4xIKCSuvCvLwk0m26G-UKPcLGz7GHR2NjZ9ePDVYHWz3Q6wg6qi_nEvMeBdRdVE50BeBp0h-L8y5cdsZHGHrhjwhjvXwqeiS3fSk6G6yjbN-I2pg_cnoHs_AmgI.mp3",
+      nombre: "Hora loca",
+      url: "https://mp3hits.cloud/wp-content/uploads/2023/09/HraLa.mp3",
       imagen:
-        "https://i.scdn.co/image/ab67616d0000b2734d7f05e6a9b26e981e9ac3ac",
-      artista: "Siddharta",
+        "https://mp3hits.cloud/wp-content/uploads/2023/09/Hora-LocaRawayanaMonsieur-Perine.webp",
+      artista: "Rawayana",
     },
     {
       id: 9,
