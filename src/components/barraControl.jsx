@@ -98,6 +98,7 @@ export const BarraControl = ({
       <div className="bg-black py-3 fixed bottom-0 flex justify-center w-[100%] items-center px-5 gap-2">
         <figure className="w-[23%] md:w-[5%]">
           <img className="w-[100%]" src={imagen} alt="" />
+          <h1 className="text-white">{nombre}</h1>
         </figure>
         <div className="flex items-center gap-3 w-[100%] flex-col">
           <div className="flex items-center gap-5">
@@ -131,7 +132,7 @@ export const BarraControl = ({
             <p className="text-gray-600">{duracion}</p>
           </div>
         </div>
-        <h1 className="text-white">{nombre}</h1>
+        
       </div>
     </>
   );

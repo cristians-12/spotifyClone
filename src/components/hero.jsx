@@ -12,7 +12,7 @@ export const Hero = ({
   temas,
   nombre,
   setNombre,
-  setImagen
+  setImagen,
 }) => {
   const [hover, setHovered] = useState(false);
   // const [nombre, setNombre] = useState(null);
@@ -67,13 +67,12 @@ export const Hero = ({
               onClick={(e) => {
                 setTema(elemento.url);
                 setReproduciendo(false);
-                setImagen(e.currentTarget.querySelector('img').src)
+                setImagen(e.currentTarget.querySelector("img").src);
               }}
               key={elemento.id}
               className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold"
             >
               <img
-                
                 ref={imgAlbum}
                 className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
                 src={elemento.imagen}
@@ -84,45 +83,51 @@ export const Hero = ({
             </div>
           ))}
         </div>
-        <h1 className="text-[40px] font-bold">Feid</h1>
-        <div className="w-[90%] flex gap-5 justify-around">
-          {temas &&
-            temas.length > 0 &&
-            temas
-              .filter((element) => element.nombre === "Feid")
-              .map((element) => (
-                <div
-                  onClick={() => {
-                    setTema(element.albums[0].canciones[0]);
-                    setReproduciendo(false);
-                    if (carta.current) {
-                      setNombre(carta.current.innerText);
-                      
-                      console.log(imgAlbum)
-                    }
-                  }}
-                  key={element.nombre}
-                  className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-                >
-                  <ul>
-                    {element.albums &&
-                      element.albums.map((album) => (
-                        <li key={album.id}>
-                          <img
-                            src={album.imagen}
-                            className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
-                            alt=""
-                          />
-                          <h2 className="text-clip">{album.nombre}</h2>
-                        </li>
-                      ))}
-                  </ul>
-                  <h2 ref={carta} className="font-light">
-                    {element.nombre}
-                  </h2>
+
+        {temas &&
+          temas.length > 0 &&
+          temas
+            .filter((element) => element.nombre === "Feid")
+            .map((element) => (
+              <div
+                key={element.nombre}
+                // className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+              >
+                <div className="flex items-center gap-5">
+                  <img className="rounded-full w-[5%]" src={element.imagen} alt="" />
+                  <h1 className="text-[40px] font-bold">Feid</h1>
                 </div>
-              ))}
-        </div>
+                <ul className="flex gap-5">
+                  {element.albums &&
+                    element.albums.map((album) => (
+                      <li
+                        key={album.id}
+                        className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+                        onClick={(e) => {
+                          // console.log(album.canciones[0].url)
+                          setTema(album.canciones[0].url);
+                          setReproduciendo(false);
+                          if (carta.current) {
+                            setNombre(carta.current.innerText);
+                            console.log(imgAlbum);
+                          }
+                          setImagen(e.currentTarget.querySelector("img").src);
+                        }}
+                      >
+                        <img
+                          src={album.imagen}
+                          className="rounded-lg p-2 md:w-[100%] w-[100%] rounded-xl"
+                          alt=""
+                        />
+                        <h2 className="text-clip">{album.nombre}</h2>
+                        <h2 ref={carta} className="font-light">
+                          {element.nombre}
+                        </h2>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
       </main>
     </>
   );
