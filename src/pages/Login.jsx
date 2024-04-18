@@ -10,12 +10,20 @@ export const Login = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  
-
   return (
     <>
       <div className="bg-[#121019] h-screen text-white">
-        <header className="py-2 md:px-40 flex items-center font-bold justify-between">
+        <video
+          className="w-[100%] h-screen absolute z-0"
+          autoPlay
+          muted
+          loop
+          style={{ maskImage: "linear-gradient(black, transparent)" }}
+        >
+          <source src="https://cdn.pixabay.com/video/2017/08/30/11720-231759062_tiny.mp4"></source>
+        </video>
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <header className=" relative z-10 py-2 md:px-40 flex items-center font-bold justify-between">
           <ToastContainer />
           <Link to={"/"}>
             <svg
@@ -36,7 +44,7 @@ export const Login = () => {
           </div>
         </header>
 
-        <main className="flex flex-col items-center justify-center h-[80vh]">
+        <main className="relative z-10 flex flex-col items-center justify-center h-[80vh]">
           <div
             action=""
             className="flex flex-col w-[80%] md:w-[35%] gap-5 bg-[#232129] p-5 rounded-lg text-[#B3B3B3]"
@@ -54,7 +62,9 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="px-3 rounded-md py-2"
             />
-            <button onClick={()=> login(email, password, 'a')}>Iniciar sesion</button>
+            <button onClick={() => login(email, password, "a")}>
+              Iniciar sesion
+            </button>
             <h4 className="text-red-500 text-center"></h4>
           </div>
           <h2 className="text-white mt-5">
