@@ -57,7 +57,7 @@ export const Registro = () => {
       <main className="flex flex-col items-center justify-center h-[80vh]">
         <div
           action=""
-          className="flex flex-col w-[35%] gap-5 bg-[#232129] p-5 rounded-lg text-[#B3B3B3]"
+          className="flex flex-col w-[80%] md:w-[35%] gap-5 bg-[#232129] p-5 rounded-lg text-[#B3B3B3]"
         >
           <input
             type="email"
