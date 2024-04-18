@@ -1,9 +1,14 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import { Link, redirect } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../context/AuthContext";
 
 export const Registro = () => {
   const auth = getAuth();
+  const { setUser } = useContext(AuthContext);
+
   const [password, setContra] = useState(null);
   const [pass2, setContra2] = useState(null);
   const [email, setEmail] = useState(null);
@@ -14,18 +19,22 @@ export const Registro = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        setUser(user);
+        toast.success("Registrado con exito");
+        window.location.href = "/";
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
+        console.log(errorCode, errorMessage);
+        toast.error(errorCode);
       });
   };
 
   return (
     <div className="bg-[#121019] h-screen text-white">
       <header className="py-2 px-40 flex items-center font-bold justify-between">
+        <ToastContainer />
         <Link to={"/"}>
           <svg
             viewBox="0 0 63 20"
@@ -71,7 +80,7 @@ export const Registro = () => {
           />
           <button
             className="font-bold hover:text-white"
-            style={{transition: 'color 0.4s ease'}}
+            style={{ transition: "color 0.4s ease" }}
             onClick={(e) => {
               e.preventDefault();
               if (password === pass2) {

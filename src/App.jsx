@@ -13,6 +13,9 @@ import {
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Registro } from "./pages/Register";
+import { Login } from "./pages/Login";
+import { AuthContext, AuthProvider } from "./context/AuthContext";
+import { setUserId } from "firebase/analytics";
 
 function App() {
   const [tema, setTema] = useState(
@@ -31,7 +34,7 @@ function App() {
       const album = collection(db, "artistas");
       const canciones = await getDocs(album);
       const cancioness = canciones.docs.map((doc) => doc.data());
-      console.log(cancioness)
+      // console.log(cancioness);
       setTemas(cancioness);
     };
 
@@ -120,28 +123,31 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                setTema={setTema}
-                setReproduciendo={setReproduciendo}
-                api={api}
-                temas={temas}
-                nombre={nombre}
-                tema={tema}
-                reproduciendo={reproduciendo}
-                setNombre={setNombre}
-                imagen={imagen}
-                setImagen={setImagen}
-              />
-            }
-          />
-          <Route path="/register" element={<Registro />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  setTema={setTema}
+                  setReproduciendo={setReproduciendo}
+                  api={api}
+                  temas={temas}
+                  nombre={nombre}
+                  tema={tema}
+                  reproduciendo={reproduciendo}
+                  setNombre={setNombre}
+                  imagen={imagen}
+                  setImagen={setImagen}
+                />
+              }
+            />
+            <Route path="/register" element={<Registro />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
       {/* <Hero
         setTema={setTema}
         setReproduciendo={setReproduciendo}

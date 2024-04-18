@@ -59,7 +59,7 @@ export const Hero = ({
         <h3 className="font-bold text-[2rem] mb-5">Populares</h3>
 
         <div className="overflow-x-scroll">
-          <div className="flex justify-around gap-3 w-[500%]">
+          <div className={`flex justify-around gap-3 md:w-[200%] w-[500%]`}>
             {api.map((elemento) => (
               <div
                 style={{
@@ -104,7 +104,7 @@ export const Hero = ({
                   <h1 className="text-[40px] font-bold">Feid</h1>
                 </div>
                 <ul className="overflow-x-scroll">
-                  <div className="w-[200%] flex gap-5 ">
+                  <div className={`md:w-[130%] w-[200%] flex gap-5`}>
                     {element.albums &&
                       element.albums.map((album) => (
                         <li

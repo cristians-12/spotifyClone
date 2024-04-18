@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "firebase": "^10.8.1",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
+    "react-cookie": "^7.1.4",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
