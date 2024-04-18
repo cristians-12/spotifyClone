@@ -15,7 +15,7 @@ export const Login = () => {
   return (
     <>
       <div className="bg-[#121019] h-screen text-white">
-        <header className="py-2 px-40 flex items-center font-bold justify-between">
+        <header className="py-2 md:px-40 flex items-center font-bold justify-between">
           <ToastContainer />
           <Link to={"/"}>
             <svg
