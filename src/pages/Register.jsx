@@ -34,7 +34,7 @@ export const Registro = () => {
   return (
     <div className="bg-[#121019] h-screen text-white">
       <video
-        className="w-[100%] h-screen absolute z-0"
+        className="w-[100%] h-screen absolute z-0 object-cover "
         autoPlay
         muted
         loop
