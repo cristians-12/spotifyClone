@@ -13,7 +13,7 @@ export const BarraControl = ({
   const [tiempo, setTiempo] = useState("0:00");
   const [duracion, setDuracion] = useState("0:00");
   const [barra, setBarra] = useState(0);
-  const [click, setClick] = useState(false);
+  const [click, setClick] = useState(true);
 
   useEffect(() => {
     const loadedMetadata = () => {
