@@ -33,6 +33,10 @@ export const AuthProvider = ({ children }) => {
     window.location.href = '/';
   };
 
+  const addFavorite = async ()=>{
+    
+  }
+
   return (
     <>
       <AuthContext.Provider value={{ user, setUser, login }}>

@@ -89,7 +89,7 @@ export const Hero = ({
         {temas &&
           temas.length > 0 &&
           temas
-            .filter((element) => element.nombre === "Feid")
+            // .filter((element) => element.nombre === "Feid")
             .map((element) => (
               <div
                 key={element.nombre}
