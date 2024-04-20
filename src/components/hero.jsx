@@ -101,7 +101,7 @@ export const Hero = ({
                     src={element.imagen}
                     alt=""
                   />
-                  <h1 className="text-[40px] font-bold">{element.nombre}</h1>
+                  <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">{element.nombre}</h1>
                 </div>
                 <ul className="overflow-x-scroll">
                   <div className={`md:w-[130%] w-[200%] flex gap-5`}>
