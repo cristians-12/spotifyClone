@@ -93,7 +93,6 @@ export const Hero = ({
             .map((element) => (
               <div
                 key={element.nombre}
-                // className="bg-[#171717] hover:bg-[#262626] md:w-[15%] w-[45vw] p-2 rounded-xl text-white text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
               >
                 <div className="flex items-center gap-5 my-5">
                   <img
@@ -103,7 +102,7 @@ export const Hero = ({
                   />
                   <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">{element.nombre}</h1>
                 </div>
-                <ul className="overflow-x-scroll">
+                <ul className="overflow-x-scroll w-[200%]">
                   <div className={`md:w-[130%] w-[200%] flex gap-5`}>
                     {element.albums &&
                       element.albums.map((album) => (
@@ -125,7 +124,7 @@ export const Hero = ({
                             className="rounded-lg p-2 md:w-[100%] w-[150px]"
                             alt=""
                           />
-                          <h2 className="text-clip overflow-hidden w-[80%]">
+                          <h2 className="text-ellipsis overflow-hidden w-[80%] whitespace-nowrap">
                             {album.nombre}
                           </h2>
                           <h2 ref={carta} className="font-light">
