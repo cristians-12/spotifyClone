@@ -2,11 +2,9 @@ import { BarraControl } from "../components/barraControl";
 import { Hero } from "../components/hero";
 
 export const Home = ({
-  setTema,
   setReproduciendo,
   api,
   temas,
-  tema,
   reproduciendo,
   nombre,
   setNombre,
@@ -16,7 +14,6 @@ export const Home = ({
   return (
     <>
       <Hero
-        setTema={setTema}
         setReproduciendo={setReproduciendo}
         api={api}
         temas={temas}
@@ -25,7 +22,6 @@ export const Home = ({
         setImagen={setImagen}
       />
       <BarraControl
-        tema={tema}
         reproduciendo={reproduciendo}
         setReproduciendo={setReproduciendo}
         nombre={nombre}

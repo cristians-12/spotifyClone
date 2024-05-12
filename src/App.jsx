@@ -16,11 +16,9 @@ import { Registro } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { AuthContext, AuthProvider } from "./context/AuthContext";
 import { setUserId } from "firebase/analytics";
+import { MusicProvider } from "./context/musicContext";
 
 function App() {
-  const [tema, setTema] = useState(
-    "https://severmp3teca.xyz/-/mp3/Feid - Ferxxo 151.mp3"
-  );
   const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
   const [nombre, setNombre] = useState(null);
@@ -123,68 +121,53 @@ function App() {
 
   return (
     <>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  setTema={setTema}
-                  setReproduciendo={setReproduciendo}
-                  api={api}
-                  temas={temas}
-                  nombre={nombre}
-                  tema={tema}
-                  reproduciendo={reproduciendo}
-                  setNombre={setNombre}
-                  imagen={imagen}
-                  setImagen={setImagen}
-                />
-              }
-            />
-            <Route
-              path="/register"
-              setTema={setTema}
-              setReproduciendo={setReproduciendo}
-              api={api}
-              temas={temas}
-              nombre={nombre}
-              tema={tema}
-              reproduciendo={reproduciendo}
-              setNombre={setNombre}
-              imagen={imagen}
-              setImagen={setImagen}
-              element={<Registro />}
-            />
-            <Route
-              path="/login"
-              setTema={setTema}
-              setReproduciendo={setReproduciendo}
-              api={api}
-              temas={temas}
-              nombre={nombre}
-              tema={tema}
-              reproduciendo={reproduciendo}
-              setNombre={setNombre}
-              imagen={imagen}
-              setImagen={setImagen}
-              element={<Login />}
-            />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-      {/* <Hero
-        setTema={setTema}
-        setReproduciendo={setReproduciendo}
-        api={api}
-        temas={temas}
-      />
-      <BarraControl
-        tema={tema}
-        reproduciendo={reproduciendo}
-        setReproduciendo={setReproduciendo}
-      /> */}
+      <MusicProvider>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home
+                    setReproduciendo={setReproduciendo}
+                    api={api}
+                    temas={temas}
+                    nombre={nombre}
+                    reproduciendo={reproduciendo}
+                    setNombre={setNombre}
+                    imagen={imagen}
+                    setImagen={setImagen}
+                  />
+                }
+              />
+              <Route
+                path="/register"
+                setReproduciendo={setReproduciendo}
+                api={api}
+                temas={temas}
+                nombre={nombre}
+                reproduciendo={reproduciendo}
+                setNombre={setNombre}
+                imagen={imagen}
+                setImagen={setImagen}
+                element={<Registro />}
+              />
+              <Route
+                path="/login"
+                setReproduciendo={setReproduciendo}
+                api={api}
+                temas={temas}
+                nombre={nombre}
+                reproduciendo={reproduciendo}
+                setNombre={setNombre}
+                imagen={imagen}
+                setImagen={setImagen}
+                element={<Login />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </MusicProvider>
     </>
   );
 }

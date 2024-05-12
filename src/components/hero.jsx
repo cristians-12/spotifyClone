@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Bell } from "../assets/svg/svg";
 import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
@@ -7,9 +7,9 @@ import { ref } from "firebase/database";
 import Loader from "./Loader";
 import { motion } from "framer-motion";
 import { container, item, staggerContainer } from "../utils/motion";
+import { MusicContext } from "../context/musicContext";
 
 export const Hero = ({
-  setTema,
   setReproduciendo,
   api,
   temas,
@@ -17,9 +17,8 @@ export const Hero = ({
   setNombre,
   setImagen,
 }) => {
+  const { setTema } = useContext(MusicContext);
   const [hover, setHovered] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  // const [nombre, setNombre] = useState(null);
   const carta = useRef(null);
   const imgAlbum = useRef(null);
 
@@ -111,7 +110,10 @@ export const Hero = ({
                     {element.nombre}
                   </h1>
                 </motion.div>
-                <motion.ul variants={staggerContainer()} className="overflow-x-scroll">
+                <motion.ul
+                  variants={staggerContainer()}
+                  className="overflow-x-scroll"
+                >
                   <motion.div
                     variants={container}
                     initial={"hidden"}
@@ -149,7 +151,6 @@ export const Hero = ({
                         </motion.li>
                       ))}
                   </motion.div>
-                  
                 </motion.ul>
               </div>
             ))}
