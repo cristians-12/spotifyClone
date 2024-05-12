@@ -4,6 +4,7 @@ import { Link, redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../context/AuthContext";
+import { BarraControl } from "../components/barraControl";
 
 export const Registro = () => {
   const auth = getAuth();
@@ -112,6 +113,7 @@ export const Registro = () => {
           </Link>
         </h2>
       </main>
+      <BarraControl/>
     </div>
   );
 };

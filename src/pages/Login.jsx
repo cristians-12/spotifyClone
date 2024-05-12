@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link, redirect } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { BarraControl } from "../components/barraControl";
 
 export const Login = () => {
   const { setUser, login } = useContext(AuthContext);
@@ -74,6 +75,7 @@ export const Login = () => {
             </Link>
           </h2>
         </main>
+        <BarraControl/>
       </div>
     </>
   );

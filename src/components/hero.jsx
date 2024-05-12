@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
 import { ref } from "firebase/database";
 import Loader from "./Loader";
+import { motion } from "framer-motion";
+import { container, item } from "../utils/motion";
 
 export const Hero = ({
   setTema,
@@ -88,55 +90,71 @@ export const Hero = ({
           </div>
         </div>
 
-        {temas.length>0 ? (
-           temas.map((element) => (
-            <div key={element.nombre}>
-              <div className="flex items-center gap-5 my-5">
-                <img
-                  className="rounded-full w-[15%] md:w-[5%]"
-                  src={element.imagen}
-                  alt=""
-                />
-                <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">
-                  {element.nombre}
-                </h1>
+        {temas.length > 0 ? (
+          <motion.div
+            variants={container}
+            initial={"hidden"}
+            animate={"visible"}
+          >
+            {temas.map((element) => (
+              <div key={element.nombre}>
+                <motion.div
+                  variants={item}
+                  className="flex items-center gap-5 my-5 item"
+                >
+                  <img
+                    className="rounded-full w-[15%] md:w-[5%]"
+                    src={element.imagen}
+                    alt=""
+                  />
+                  <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">
+                    {element.nombre}
+                  </h1>
+                </motion.div>
+                <motion.ul className="overflow-x-scroll">
+                  <motion.div
+                    variants={container}
+                    initial={"hidden"}
+                    animate={"visible"}
+                    className={`md:w-[150%] w-[300%] flex gap-5`}
+                  >
+                    {element.albums &&
+                      element.albums.map((album) => (
+                        <motion.li
+                          variants={item}
+                          key={album.id}
+                          className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
+                          onClick={(e) => {
+                            setTema(album.canciones[0].url);
+                            setReproduciendo(false);
+                            if (carta.current) {
+                              setNombre(carta.current.innerText);
+                              console.log(imgAlbum);
+                            }
+                            setImagen(e.currentTarget.querySelector("img").src);
+                          }}
+                        >
+                          <img
+                            src={album.imagen}
+                            className="rounded-lg p-2 md:w-[100%] w-[150px]"
+                            alt=""
+                          />
+                          <h2 className="text-ellipsis overflow-hidden w-[80%] whitespace-nowrap">
+                            {album.nombre}
+                          </h2>
+                          <h2 ref={carta} className="font-light">
+                            {element.nombre}
+                          </h2>
+                        </motion.li>
+                      ))}
+                  </motion.div>
+                </motion.ul>
               </div>
-              <ul className="overflow-x-scroll">
-                <div className={`md:w-[150%] w-[300%] flex gap-5`}>
-                  {element.albums &&
-                    element.albums.map((album) => (
-                      <li
-                        key={album.id}
-                        className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
-                        onClick={(e) => {
-                          setTema(album.canciones[0].url);
-                          setReproduciendo(false);
-                          if (carta.current) {
-                            setNombre(carta.current.innerText);
-                            console.log(imgAlbum);
-                          }
-                          setImagen(e.currentTarget.querySelector("img").src);
-                        }}
-                      >
-                        <img
-                          src={album.imagen}
-                          className="rounded-lg p-2 md:w-[100%] w-[150px]"
-                          alt=""
-                        />
-                        <h2 className="text-ellipsis overflow-hidden w-[80%] whitespace-nowrap">
-                          {album.nombre}
-                        </h2>
-                        <h2 ref={carta} className="font-light">
-                          {element.nombre}
-                        </h2>
-                      </li>
-                    ))}
-                </div>
-              </ul>
-            </div>
-          ))
-        ) : <Loader/>
-         }
+            ))}
+          </motion.div>
+        ) : (
+          <Loader />
+        )}
       </main>
     </>
   );
