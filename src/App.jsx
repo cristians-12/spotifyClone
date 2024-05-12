@@ -41,7 +41,7 @@ function App() {
       nombre: "Prohibidox",
       url: "https://severmp3teca.xyz/-/mp3/Feid - Prohibidox.mp3",
       imagen:
-        "https://elgeneroplus.net/wp-content/uploads/2023/07/Feid-Feliz-Cumple-Ferxxo-Album-2022.jpg",
+        "https://images.genius.com/4d31ad179cd2b577f133cbb0287af431.1000x1000x1.png",
       artista: "Feid",
     },
     {
