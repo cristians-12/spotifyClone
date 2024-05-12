@@ -4,6 +4,7 @@ import { Bell } from "../assets/svg/svg";
 import { Link } from "react-router-dom";
 import { Registro } from "../pages/Register";
 import { ref } from "firebase/database";
+import Loader from "./Loader";
 
 export const Hero = ({
   setTema,
@@ -15,6 +16,7 @@ export const Hero = ({
   setImagen,
 }) => {
   const [hover, setHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   // const [nombre, setNombre] = useState(null);
   const carta = useRef(null);
   const imgAlbum = useRef(null);
@@ -86,56 +88,55 @@ export const Hero = ({
           </div>
         </div>
 
-        {temas &&
-          temas.length > 0 &&
-          temas
-            // .filter((element) => element.nombre === "Feid")
-            .map((element) => (
-              <div
-                key={element.nombre}
-              >
-                <div className="flex items-center gap-5 my-5">
-                  <img
-                    className="rounded-full w-[15%] md:w-[5%]"
-                    src={element.imagen}
-                    alt=""
-                  />
-                  <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">{element.nombre}</h1>
-                </div>
-                <ul className="overflow-x-scroll">
-                  <div className={`md:w-[150%] w-[300%] flex gap-5`}>
-                    {element.albums &&
-                      element.albums.map((album) => (
-                        <li
-                          key={album.id}
-                          className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
-                          onClick={(e) => {
-                            setTema(album.canciones[0].url);
-                            setReproduciendo(false);
-                            if (carta.current) {
-                              setNombre(carta.current.innerText);
-                              console.log(imgAlbum);
-                            }
-                            setImagen(e.currentTarget.querySelector("img").src);
-                          }}
-                        >
-                          <img
-                            src={album.imagen}
-                            className="rounded-lg p-2 md:w-[100%] w-[150px]"
-                            alt=""
-                          />
-                          <h2 className="text-ellipsis overflow-hidden w-[80%] whitespace-nowrap">
-                            {album.nombre}
-                          </h2>
-                          <h2 ref={carta} className="font-light">
-                            {element.nombre}
-                          </h2>
-                        </li>
-                      ))}
-                  </div>
-                </ul>
+        {temas.length>0 ? (
+           temas.map((element) => (
+            <div key={element.nombre}>
+              <div className="flex items-center gap-5 my-5">
+                <img
+                  className="rounded-full w-[15%] md:w-[5%]"
+                  src={element.imagen}
+                  alt=""
+                />
+                <h1 className="text-[40px] font-bold text-ellipsis overflow-hidden w-[70%] whitespace-nowrap">
+                  {element.nombre}
+                </h1>
               </div>
-            ))}
+              <ul className="overflow-x-scroll">
+                <div className={`md:w-[150%] w-[300%] flex gap-5`}>
+                  {element.albums &&
+                    element.albums.map((album) => (
+                      <li
+                        key={album.id}
+                        className="bg-[#171717] hover:bg-[#262626] md:w-[15%] p-2 rounded-xl text-white font-semibold text-ellipsis flex flex-col items-center text-center"
+                        onClick={(e) => {
+                          setTema(album.canciones[0].url);
+                          setReproduciendo(false);
+                          if (carta.current) {
+                            setNombre(carta.current.innerText);
+                            console.log(imgAlbum);
+                          }
+                          setImagen(e.currentTarget.querySelector("img").src);
+                        }}
+                      >
+                        <img
+                          src={album.imagen}
+                          className="rounded-lg p-2 md:w-[100%] w-[150px]"
+                          alt=""
+                        />
+                        <h2 className="text-ellipsis overflow-hidden w-[80%] whitespace-nowrap">
+                          {album.nombre}
+                        </h2>
+                        <h2 ref={carta} className="font-light">
+                          {element.nombre}
+                        </h2>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            </div>
+          ))
+        ) : <Loader/>
+         }
       </main>
     </>
   );
