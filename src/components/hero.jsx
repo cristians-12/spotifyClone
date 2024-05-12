@@ -21,7 +21,9 @@ export const Hero = ({
   return (
     <>
       <main className="bg-[#121019] w-[100%] text-white px-3 mb-[80px] md:mb- px-10">
-        <h1 className="font-bold text-[40px]">Buenas tardes</h1>
+        <h1 className="font-bold text-[40px]">{
+          new Date().getHours() < 12 ? 'Buenos dias' : 'Buenas tardes'
+        }</h1>
         <div className="flex justify-between p-4 items-center">
           <div className="flex items-center gap-2 ">
             <button className="bg-white font-bold text-black px-2 py-1 rounded-2xl">
