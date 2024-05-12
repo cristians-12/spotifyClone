@@ -19,7 +19,7 @@ import { setUserId } from "firebase/analytics";
 import { MusicProvider } from "./context/musicContext";
 
 function App() {
-  const [reproduciendo, setReproduciendo] = useState(false);
+  // const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
   const [nombre, setNombre] = useState(null);
   const [imagen, setImagen] = useState(null);
@@ -129,11 +129,11 @@ function App() {
                 path="/"
                 element={
                   <Home
-                    setReproduciendo={setReproduciendo}
+                    // setReproduciendo={setReproduciendo}
                     api={api}
                     temas={temas}
                     nombre={nombre}
-                    reproduciendo={reproduciendo}
+                    // reproduciendo={reproduciendo}
                     setNombre={setNombre}
                     imagen={imagen}
                     setImagen={setImagen}
@@ -142,11 +142,11 @@ function App() {
               />
               <Route
                 path="/register"
-                setReproduciendo={setReproduciendo}
+             
                 api={api}
                 temas={temas}
                 nombre={nombre}
-                reproduciendo={reproduciendo}
+            
                 setNombre={setNombre}
                 imagen={imagen}
                 setImagen={setImagen}
@@ -154,11 +154,11 @@ function App() {
               />
               <Route
                 path="/login"
-                setReproduciendo={setReproduciendo}
+                
                 api={api}
                 temas={temas}
                 nombre={nombre}
-                reproduciendo={reproduciendo}
+            
                 setNombre={setNombre}
                 imagen={imagen}
                 setImagen={setImagen}

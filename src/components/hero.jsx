@@ -10,14 +10,13 @@ import { container, item, staggerContainer } from "../utils/motion";
 import { MusicContext } from "../context/musicContext";
 
 export const Hero = ({
-  setReproduciendo,
   api,
   temas,
   nombre,
   setNombre,
   setImagen,
 }) => {
-  const { setTema } = useContext(MusicContext);
+  const { setTema, setReproduciendo } = useContext(MusicContext);
   const [hover, setHovered] = useState(false);
   const carta = useRef(null);
   const imgAlbum = useRef(null);

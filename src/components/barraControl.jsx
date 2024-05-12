@@ -2,11 +2,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ReactAudioPlayer from "react-audio-player";
 import { Pause, Play, Skip } from "../assets/svg/svg.jsx";
 import { motion } from "framer-motion";
-import { MusicContext } from "../context/musicContext.jsx";
+import {MusicContext} from "../context/musicContext.jsx";
 
 export const BarraControl = ({
-  reproduciendo,
-  setReproduciendo,
   nombre,
   imagen,
 }) => {
@@ -15,7 +13,7 @@ export const BarraControl = ({
   const [duracion, setDuracion] = useState("0:00");
   const [barra, setBarra] = useState(0);
   const [click, setClick] = useState(true);
-  const { tema } = useContext(MusicContext);
+  const { tema, reproduciendo, setReproduciendo } = useContext(MusicContext);
 
   useEffect(() => {
     const loadedMetadata = () => {
