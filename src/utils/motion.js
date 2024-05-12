@@ -17,3 +17,14 @@ export const item = {
     opacity: 1,
   },
 };
+export const staggerContainer = (staggerChildren, delayChildren) => {
+    return {
+      hidden: {},
+      show: {
+        transition: {
+          staggerChildren: staggerChildren,
+          delayChildren: delayChildren || 0,
+        },
+      },
+    };
+  };

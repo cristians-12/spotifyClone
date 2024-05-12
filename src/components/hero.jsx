@@ -6,7 +6,7 @@ import { Registro } from "../pages/Register";
 import { ref } from "firebase/database";
 import Loader from "./Loader";
 import { motion } from "framer-motion";
-import { container, item } from "../utils/motion";
+import { container, item, staggerContainer } from "../utils/motion";
 
 export const Hero = ({
   setTema,
@@ -111,12 +111,13 @@ export const Hero = ({
                     {element.nombre}
                   </h1>
                 </motion.div>
-                <motion.ul className="overflow-x-scroll">
+                <motion.ul variants={staggerContainer()} className="overflow-x-scroll">
                   <motion.div
                     variants={container}
                     initial={"hidden"}
                     animate={"visible"}
                     className={`md:w-[150%] w-[300%] flex gap-5`}
+                    whileInView="show"
                   >
                     {element.albums &&
                       element.albums.map((album) => (
@@ -148,6 +149,7 @@ export const Hero = ({
                         </motion.li>
                       ))}
                   </motion.div>
+                  
                 </motion.ul>
               </div>
             ))}
