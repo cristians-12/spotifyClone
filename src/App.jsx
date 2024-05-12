@@ -21,8 +21,8 @@ import { MusicProvider } from "./context/musicContext";
 function App() {
   // const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
-  const [nombre, setNombre] = useState(null);
-  const [imagen, setImagen] = useState(null);
+  // const [nombre, setNombre] = useState(null);
+  // const [imagen, setImagen] = useState(null);
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -132,11 +132,9 @@ function App() {
                     // setReproduciendo={setReproduciendo}
                     api={api}
                     temas={temas}
-                    nombre={nombre}
+                   
                     // reproduciendo={reproduciendo}
-                    setNombre={setNombre}
-                    imagen={imagen}
-                    setImagen={setImagen}
+                    
                   />
                 }
               />
@@ -145,11 +143,7 @@ function App() {
              
                 api={api}
                 temas={temas}
-                nombre={nombre}
-            
-                setNombre={setNombre}
-                imagen={imagen}
-                setImagen={setImagen}
+      
                 element={<Registro />}
               />
               <Route
@@ -157,11 +151,7 @@ function App() {
                 
                 api={api}
                 temas={temas}
-                nombre={nombre}
             
-                setNombre={setNombre}
-                imagen={imagen}
-                setImagen={setImagen}
                 element={<Login />}
               />
             </Routes>

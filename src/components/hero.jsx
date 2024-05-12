@@ -12,11 +12,8 @@ import { MusicContext } from "../context/musicContext";
 export const Hero = ({
   api,
   temas,
-  nombre,
-  setNombre,
-  setImagen,
 }) => {
-  const { setTema, setReproduciendo } = useContext(MusicContext);
+  const { setTema, setReproduciendo, setNombre, setImagen } = useContext(MusicContext);
   const [hover, setHovered] = useState(false);
   const carta = useRef(null);
   const imgAlbum = useRef(null);
