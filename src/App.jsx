@@ -19,10 +19,7 @@ import { setUserId } from "firebase/analytics";
 import { MusicProvider } from "./context/musicContext";
 
 function App() {
-  // const [reproduciendo, setReproduciendo] = useState(false);
   const [temas, setTemas] = useState({});
-  // const [nombre, setNombre] = useState(null);
-  // const [imagen, setImagen] = useState(null);
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -32,7 +29,6 @@ function App() {
       const album = collection(db, "artistas");
       const canciones = await getDocs(album);
       const cancioness = canciones.docs.map((doc) => doc.data());
-      // console.log(cancioness);
       setTemas(cancioness);
     };
 
@@ -61,7 +57,7 @@ function App() {
       nombre: "Diluvio",
       url: "https://severmp3teca.xyz/-/mp3/Rauw Alejandro - Diluvio.mp3",
       imagen:
-        "https://mp3teca.co/-/images/18398_1440_20230707045703-150x150.jpg",
+        "https://i1.sndcdn.com/artworks-TfqaYfTT4wZs-0-t500x500.jpg",
       artista: "Rauw Alejandro",
     },
     {
@@ -125,33 +121,17 @@ function App() {
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home
-                    // setReproduciendo={setReproduciendo}
-                    api={api}
-                    temas={temas}
-                   
-                    // reproduciendo={reproduciendo}
-                    
-                  />
-                }
-              />
+              <Route path="/" element={<Home api={api} temas={temas} />} />
               <Route
                 path="/register"
-             
                 api={api}
                 temas={temas}
-      
                 element={<Registro />}
               />
               <Route
                 path="/login"
-                
                 api={api}
                 temas={temas}
-            
                 element={<Login />}
               />
             </Routes>
