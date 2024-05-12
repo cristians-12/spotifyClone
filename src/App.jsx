@@ -143,8 +143,34 @@ function App() {
                 />
               }
             />
-            <Route path="/register" element={<Registro />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/register"
+              setTema={setTema}
+              setReproduciendo={setReproduciendo}
+              api={api}
+              temas={temas}
+              nombre={nombre}
+              tema={tema}
+              reproduciendo={reproduciendo}
+              setNombre={setNombre}
+              imagen={imagen}
+              setImagen={setImagen}
+              element={<Registro />}
+            />
+            <Route
+              path="/login"
+              setTema={setTema}
+              setReproduciendo={setReproduciendo}
+              api={api}
+              temas={temas}
+              nombre={nombre}
+              tema={tema}
+              reproduciendo={reproduciendo}
+              setNombre={setNombre}
+              imagen={imagen}
+              setImagen={setImagen}
+              element={<Login />}
+            />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

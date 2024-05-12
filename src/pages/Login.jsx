@@ -6,7 +6,18 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { BarraControl } from "../components/barraControl";
 
-export const Login = () => {
+export const Login = ({
+  setTema,
+  setReproduciendo,
+  api,
+  temas,
+  tema,
+  reproduciendo,
+  nombre,
+  setNombre,
+  imagen,
+  setImagen,
+}) => {
   const { setUser, login } = useContext(AuthContext);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -75,7 +86,13 @@ export const Login = () => {
             </Link>
           </h2>
         </main>
-        <BarraControl/>
+        <BarraControl
+          tema={tema}
+          reproduciendo={reproduciendo}
+          setReproduciendo={setReproduciendo}
+          nombre={nombre}
+          imagen={imagen}
+        />
       </div>
     </>
   );
